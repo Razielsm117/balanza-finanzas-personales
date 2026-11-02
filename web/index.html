@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Balanza: un panel de finanzas personales con análisis de ingresos, gastos y reportes. Proyecto de portafolio con Python y SQL.">
+  <meta name="theme-color" content="#173e35"><title>Balanza · Finanzas personales</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="skip" href="#main">Saltar al contenido</a>
+<aside class="sidebar">
+  <a class="brand" href="./"><span class="brandmark">b.</span><span>balanza<span class="brand-dot">.</span></span></a>
+  <div class="workspace"><span class="avatar">R</span><div>Mi espacio personal<small>Finanzas en perspectiva</small></div></div>
+  <p class="nav-label">TU DINERO</p>
+  <nav aria-label="Navegación principal">
+    <button class="nav-item active" data-view="overview" aria-current="page"><span aria-hidden="true">◫</span> Vista general</button>
+    <button class="nav-item" data-view="transactions"><span aria-hidden="true">⇄</span> Movimientos</button>
+    <button class="nav-item" data-view="reports"><span aria-hidden="true">▤</span> Reportes</button>
+  </nav>
+  <div class="sidebar-bottom"><div class="project-label">HECHO PARA ENTENDER</div><p>Una mirada clara<br>a tus números.</p><div class="tech-tags"><span>Python</span><span>SQL</span></div><small>Proyecto de portafolio · Raziel</small></div>
+</aside>
+<div class="shell">
+  <header class="topbar"><span>Tu espacio <span class="slash">/</span> <strong id="breadcrumb">Vista general</strong></span><span class="demo-pill"><i></i><span id="data-status">Datos ficticios de ejemplo</span></span></header>
+  <main id="main">
+    <div class="page-heading"><div><p class="eyebrow">MENOS RUIDO. MÁS CLARIDAD.</p><h1 id="page-title">Tu dinero, en perspectiva<span>.</span></h1><p class="subtitle" id="page-subtitle">Conoce lo que entra, lo que sale y lo que queda.</p></div><div class="heading-actions"><button class="button secondary" id="import-btn"><span aria-hidden="true">↑</span> Importar CSV</button><button class="button primary" id="export-btn"><span aria-hidden="true">↓</span> Exportar datos</button></div></div>
+    <div class="filterbar"><div class="filters"><label>Período<select id="month-filter"><option value="">Todos los meses</option></select></label><label>Categoría<select id="category-filter"><option value="">Todas las categorías</option></select></label><label>Cuenta<select id="account-filter"><option value="">Todas las cuentas</option></select></label></div><button class="text-button" id="reset-filters">Restablecer filtros ↺</button></div>
+    <p id="status" class="status" role="status" aria-live="polite"></p>
+    <div id="content" aria-busy="true"><p class="loading">Preparando tus números…</p></div>
+    <footer><span><strong>balanza.</strong> Un poco de orden hace la diferencia.</span><span>MXN · <span id="source-label">Demostración interactiva</span></span></footer>
+  </main>
+</div>
+<dialog id="import-dialog" aria-labelledby="import-title">
+  <form id="import-form"><div class="dialog-heading"><h2 id="import-title">Importar movimientos</h2><button type="button" id="close-dialog" class="icon-button" aria-label="Cerrar">×</button></div><p>Sube un CSV en pesos mexicanos. Cada movimiento debe tener un identificador único.</p><div class="format-box">id, date, description, category, account, type, amount</div><p class="small">Fecha: AAAA-MM-DD · Tipo: ingreso o gasto · Importe positivo con punto decimal · Máximo 2 MB y 10,000 movimientos.</p><label class="file-label">Seleccionar archivo CSV<input required id="csv-file" type="file" accept=".csv,text/csv"></label><p class="small" id="import-storage"></p><p id="import-error" class="error" role="alert"></p><div class="dialog-actions"><button type="button" id="example-btn" class="text-button">Descargar ejemplo</button><button type="submit" class="button primary" id="confirm-import">Importar movimientos</button></div></form>
+</dialog>
+<script src="config.js"></script><script type="module" src="app.js"></script>
+</body></html>
